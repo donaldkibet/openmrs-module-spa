@@ -2,19 +2,19 @@
 
 <module configVersion="1.2">
 
-	<id>${project.parent.artifactId}</id>
-	<name>${project.parent.name}</name>
-	<version>${project.parent.version}</version>
-	<package>${project.parent.groupId}.${project.parent.artifactId}</package>
+	<id>spa</id>
+	<name>Single Page Application</name>
+	<version>1.0-SNAPSHOT</version>
+	<package>org.openmrs.module.spa</package>
 	<author>OpenMRS Developer</author>
 	<description>
-		${project.parent.description}
+		The SPA module for OpenMRS
 	</description>
-	<updateURL>https://modules.openmrs.org/modules/download/${project.parent.artifactId}/update.rdf</updateURL>
-	<require_version>${openMRSVersion}</require_version>
+	<updateURL>https://modules.openmrs.org/modules/download/spa/update.rdf</updateURL>
+	<require_version>1.10.5</require_version>
 
 
-	<activator>${project.parent.groupId}.${project.parent.artifactId}.SpaActivator</activator>
+	<activator>org.openmrs.module.spa.SpaActivator</activator>
 
 	<globalProperty>
         <property>spa.baseUrl</property>

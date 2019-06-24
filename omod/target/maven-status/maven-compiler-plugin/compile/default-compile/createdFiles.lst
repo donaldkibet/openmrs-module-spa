@@ -1,0 +1,4 @@
+org/openmrs/module/spa/SpaActivator.class
+org/openmrs/module/spa/servlet/SpaServlet.class
+org/openmrs/module/spa/controller/SpaController.class
+org/openmrs/module/spa/filter/SpaFilter.class

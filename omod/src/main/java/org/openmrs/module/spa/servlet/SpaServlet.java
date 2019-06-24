@@ -9,6 +9,9 @@
  */
 package org.openmrs.module.spa.servlet;
 
+import org.openmrs.api.APIException;
+import org.openmrs.api.context.Context;
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -17,6 +20,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static org.openmrs.module.spa.filter.SpaFilter.DEFAULT_SPA_BASE_URL;
+import static org.openmrs.module.spa.filter.SpaFilter.GP_KEY_SPA_BASE_URL;
+
 public class SpaServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -24,6 +30,13 @@ public class SpaServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/module/spa/master-single-page-application.form");
+		req.setAttribute("openmrsBaseUrlContext", new String(req.getContextPath()));
+		try {
+			req.setAttribute("spaBaseUrlContext", Context.getAdministrationService().getGlobalProperty(GP_KEY_SPA_BASE_URL,
+					DEFAULT_SPA_BASE_URL));
+		} catch (APIException e) {
+			e.printStackTrace();
+		}
 		dispatcher.forward(req, resp);
 	}
 }
